@@ -1,0 +1,85 @@
+{% extends 'base.html' %} 
+
+{% block title %}{{product.Product_name}} {% endblock title %} 
+
+{% block body %}
+    <link rel="stylesheet" href="../static/css/product_page.css">
+        
+    <div class="container-fluid row">
+        <!-- <main class="row "> -->
+          <div class="col-4 col-8 col-sm-8 col-md-8 p-img">
+            <img class="4" src="/media/{{product.image}}" alt="">
+
+            <button class="btn m-3 ms-5 cart" id="pr{{product.id}}" class="cart" style="background: rgb(255, 209, 6);">Add To Cart</button>
+            
+            <button class="button cart" id="pr{{product.id}}">
+              <span>Add to cart</span>
+              <div class="cart">
+                  <svg viewBox="0 0 36 26">
+                      <polyline points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
+                      <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
+                  </svg>
+              </div>
+          </button>
+          
+          <!-- dribbble - twitter -->
+          <a class="dribbble" target="_blank"><img src="https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg" alt=""></a>
+          
+            
+            
+            
+            <button class="btn" style="background: rgb(255, 155, 6);">Buy Now</button>
+          </div>
+
+          <div class="col-8 p-info">
+            <h1>{{product.Product_name}} - high quality cotton</h1>
+            <p>{{product.desc}}</p>
+
+            <div class="stars">
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+              </div>
+            <hr>
+
+            <div class="price">
+                <h1 class="discount">-7%</h1>
+                <div class="cost">
+                    <span>&#8377</span>
+                    <h1 class="cost">{{product.price}}</h1>
+                </div>
+            </div>
+            <div class="old-price">
+                <p class="cut-price">
+                    <strike>MRP 1499</strike></p>
+            </div>
+          <hr>
+          <div class="specs">
+            <div class="que">
+                <b>
+                  <h4 class="spec-que">Type :</h4>
+                <h4 class="spec-que">Brand :</h4>
+                <h4 class="spec-que">Color :</h4>
+                <h4 class="spec-que">Size :</h4>
+                <h4 class="spec-que">Category :</h4>
+                <h4 class="spec-que">EMI :</h4>
+            </b>
+            </div>
+            <div class="ans">
+                <h4 class="spec-ans"> {{product.category}}</h4>
+                <h4 class="spec-ans"> {{product.Brand}}</h4>
+                <h4 class="spec-ans"> Green and White</h4>
+                <h4 class="spec-ans"> s,l,xl,xxl</h4>
+                <h4 class="spec-ans"> {{product.category}}</h4>
+                <h4 class="spec-ans"> No</h4>
+            </div>
+
+          </div>
+        </div>
+        <!-- </main> -->
+      </div>
+    
+    
+   {% endblock %}

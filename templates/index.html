@@ -1,0 +1,264 @@
+{% extends 'base.html' %} {% block title %}Home{% endblock title %} 
+{% block body %}
+
+<div id="myCarousel" class="carousel slide mt-5" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-bs-target="#myCarousel"
+      data-bs-slide-to="0"
+      class="active"
+      aria-label="Slide 1"
+      aria-current="true"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#myCarousel"
+      data-bs-slide-to="1"
+      aria-label="Slide 2"
+      class=""
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#myCarousel"
+      data-bs-slide-to="2"
+      aria-label="Slide 3"
+      class=""
+    ></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        src="../static/images/hero5.png"
+        height="300px"
+        style="object-fit: cover"
+        class="d-block w-100"
+        alt="..."
+      />
+      <!-- <div class="container">
+        <div
+          class="carousel-caption text-start"
+          style="
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem 1rem;
+            border-radius: 11px;
+          "
+        >
+          <h1 class="text-shadow-sm">Welcome to Marty's Blog</h1>
+          <p>
+            Here We Write Very interesting and useful tutorials and articles.
+          </p>
+          <p><a class="btn btn-lg btn-primary" href="#">Explore Blogs</a></p>
+        </div>
+      </div> -->
+    </div>
+    <div class="carousel-item">
+      <img
+        src="../static/images/b16.jpg"
+        height="300px"
+        style="object-fit: cover"
+        class="d-block w-100"
+        alt="..."
+      />
+      <!-- <div class="container">
+        <div
+          class="carousel-caption"
+          style="
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem 1rem;
+            border-radius: 11px;
+          "
+        >
+          <h1>Another example headline.</h1>
+          <p>
+            Some representative placeholder content for the second slide of the
+            carousel.
+          </p>
+          <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+        </div>
+      </div> -->
+    </div>
+    <div class="carousel-item">
+      <img
+        src="../static/images/b18.jpg"
+        height="300px"
+        style="object-fit: cover"
+        class="d-block w-100"
+        alt="..."
+      />
+      </div>
+    
+  
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#myCarousel"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#myCarousel"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  </div>
+</div>
+
+
+
+
+<div class="container">
+  <section id="features" class="section-p1 my-3">
+    <div class="f-box me-2">
+      <img src="../static/images/features/f1.png" alt="free shipping" />
+      <h6>Free shipping</h6>
+    </div>
+    <div class="f-box me-2">
+      <img src="../static/images/features/f2.png" alt="online order" />
+      <h6>online order</h6>
+    </div>
+    <div class="f-box me-2">
+      <img src="../static/images/features/f3.png" alt="save money" />
+      <h6>save money</h6>
+    </div>
+    <div class="f-box me-2">
+      <img src="../static/images/features/f4.png" alt="promotions" />
+      <h6>promotions</h6>
+    </div>
+    <div class="f-box me-2">
+      <img src="../static/images/features/f5.png" alt="happy sell" />
+      <h6>happy sell</h6>
+    </div>
+    <div class="f-box me-2">
+      <img src="../static/images/features/f6.png" alt="24/7 support" />
+      <h6>24/7 support</h6>
+    </div>
+  </section>
+</div>
+
+{% for products,range,nslides in allprods %}
+<h1 class="text-start ms-5 mt-3" style="text-transform: capitalize;">{{products.0.category}}</h1>
+<div
+  id="carouselExampleControls{{ forloop.counter }}"
+  class="carousel carousel-dark slide"
+  data-bs-ride="carousel"
+>
+  <div class="carousel-indicators" style="display: none;">
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators{{forloop.parentloop.counter}}"
+      data-bs-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    {% for i in range %}
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators{{forloop.parentloop.counter}}"
+      data-bs-slide-to="{{i}}"
+      aria-label="Slide 2"
+    ></button>
+    {% endfor %}
+  </div>
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="card-wrapper container-sm d-flex">
+        {% for i in products %}
+        <div class="product-cart">
+          <div id="imgpr{{i.id}}">
+          <img  src="/media/{{i.image}}" alt="product image" />
+        </div>
+          <span>{{i.Brand}}</span>
+          <h4 id="namepr{{i.id}}">{{i.Product_name}}</h4>
+          <div class="stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <h4 class="price"> &#8377 {{i.price}}</h4>
+          <div class="btns">
+          <!-- <a  class="cart col-3" id="pr{{i.id}}" style="cursor: pointer;"><i class="fa-solid fa-cart-shopping buy-icon"></i></a> -->
+          <!-- <button  class="cart button" id="pr{{i.id}}" style="cursor: pointer; overflow: hidden;">
+           
+            <span></span>
+            <div class="cart">
+                <svg viewBox="0 0 36 26">
+                    <polyline points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
+                    <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
+                </svg>
+            </div> -->
+          
+            <button class="button cart" id="pr{{product.id}}">
+              <span>a</span>
+              <div class="cart">
+                <svg viewBox="0 0 36 26">
+                  <polyline points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
+                  <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
+                </svg>
+              </div>
+          </button>
+          
+          
+          <!-- </button> -->
+         
+         
+         
+         
+         
+          <a  href="products/{{i.id}}" class="view" id="pr{{i.id}}" style="cursor: pointer;"><i class="fa-solid fa-eye"></i></a>
+        </div>
+        </div>
+        
+      
+        {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="card-wrapper container-sm d-flex justify-content-around">
+        
+          
+        {% endif %} 
+        {% endfor %}
+      </div>
+      </div>
+    </div>
+
+    <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleControls{{ forloop.counter }}"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleControls{{ forloop.counter }}"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+  {% endfor %}
+  <section id="off-banner" class="section-m1">
+    <h4>Repaire Services</h4>
+    <h2>Up to 70% Off - All t-Shirts &amp; Accessories</h2>
+    <button class="normal">Explore More</button>
+  </section>
+
+  {% endblock body %}
+
+  
